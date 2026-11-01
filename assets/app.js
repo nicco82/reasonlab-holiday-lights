@@ -7,7 +7,7 @@ const q=new URLSearchParams(location.search),at=JSON.parse(sessionStorage.getIte
 const rc=(q.get('ref')||'').replace(/[^\w-]/g,'').slice(0,32);if(rc)at.ref=rc;sessionStorage.setItem('attr',JSON.stringify(at));
 if(at.ref&&!f.ref.value)f.ref.value=at.ref;
 function render(){const t=D[lang];document.documentElement.lang=lang;$('#lang').textContent=lang==='en'?'ES':'EN';
-$('#brand').textContent=S.name;$('#brand').hidden=!S.name;$('#nav').innerHTML=['services','process','areas','faq'].map((id,i)=>`<a href="#${id}">${t.nav[i]}</a>`).join('');
+$('#brand').textContent=S.name||t.brand;$('#brand').hidden=false;$('#nav').innerHTML=['services','process','areas','faq'].map((id,i)=>`<a href="#${id}">${t.nav[i]}</a>`).join('');
 document.querySelectorAll('[data-i]').forEach(e=>{const v=t[e.dataset.i];if(typeof v==='string')e.textContent=v});
 $('#heroImage').alt=t.heroAlt;
 ['incT','modT','procT','areasT','areasN','refT','faqT','fT','okT','okB','fnote'].forEach(k=>{$('#'+k).textContent=t[k]});
