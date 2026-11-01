@@ -41,9 +41,10 @@ f.addEventListener('input',()=>{if(!started){started=true;ev('form_start')}});
 document.addEventListener('click',e=>{const a=e.target.closest('[data-ev]');if(a)ev(a.dataset.ev)});
 $('#lang').onclick=()=>{lang=lang==='en'?'es':'en';localStorage.setItem('lang',lang);render()};
 function paintReveal(value){const n=Math.max(5,Math.min(95,Number(value)));compare.style.setProperty('--reveal',`${n}%`);range.value=n;range.setAttribute('aria-valuetext',`${D[lang].beforeLabel} ${100-n}%, ${D[lang].afterLabel} ${n}%`)}
-let motionOn=false,frame=0,lastFrame=0,direction=1,autoRevealStarted=false;
-function animateReveal(time){if(!motionOn)return;const delta=lastFrame?Math.min(50,time-lastFrame):0;lastFrame=time;let value=Number(range.value)+direction*delta*.018;if(value>=95){value=95;direction=-1}else if(value<=5){value=5;direction=1}paintReveal(value);frame=requestAnimationFrame(animateReveal)}
-function setMotion(on){motionOn=on;motion.setAttribute('aria-pressed',String(on));motion.textContent=on?D[lang].comparePause:D[lang].comparePlay;if(on){lastFrame=0;frame=requestAnimationFrame(animateReveal)}else if(frame)cancelAnimationFrame(frame)}
+let motionOn=false,frame=0,legStart=0,legFrom=50,legTo=95,direction=1,autoRevealStarted=false;
+const legDuration=1500,easeAmplitude=.85/(2*Math.PI);
+function animateReveal(time){if(!motionOn)return;if(!legStart){legStart=time;legFrom=Number(range.value);legTo=direction>0?95:5}const progress=Math.min(1,(time-legStart)/legDuration),eased=progress+easeAmplitude*Math.sin(2*Math.PI*progress);paintReveal(legFrom+(legTo-legFrom)*eased);if(progress>=1){direction*=-1;legFrom=legTo;legTo=direction>0?95:5;legStart=time}frame=requestAnimationFrame(animateReveal)}
+function setMotion(on){motionOn=on;motion.setAttribute('aria-pressed',String(on));motion.textContent=on?D[lang].comparePause:D[lang].comparePlay;if(on){legStart=0;frame=requestAnimationFrame(animateReveal)}else{legStart=0;if(frame)cancelAnimationFrame(frame)}}
 motion.onclick=()=>setMotion(!motionOn);range.addEventListener('input',()=>{if(motionOn)setMotion(false);paintReveal(range.value)});paintReveal(range.value);
 if('IntersectionObserver'in window){const compareObserver=new IntersectionObserver(entries=>{if(!entries[0].isIntersecting&&motionOn)setMotion(false);else if(entries[0].isIntersecting&&!autoRevealStarted&&!matchMedia('(prefers-reduced-motion: reduce)').matches){autoRevealStarted=true;setMotion(true)}},{threshold:.25});compareObserver.observe(compare)}
 f.onsubmit=async e=>{e.preventDefault();if(busy||!valid())return;const t=D[lang],m=$('#msg');
