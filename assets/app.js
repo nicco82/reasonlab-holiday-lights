@@ -1,5 +1,5 @@
 (()=>{const S=window.SITE,D=window.I18N,$=s=>document.querySelector(s),f=$('#f');
-let lang=localStorage.getItem('lang')||((navigator.language||'').slice(0,2)==='es'?'es':'en'),step=0,key=crypto.randomUUID(),busy=false,started=false;
+let lang=localStorage.getItem('lang')==='es'?'es':'en',step=0,key=crypto.randomUUID(),busy=false,started=false;
 const ev=n=>{(window.dataLayer=window.dataLayer||[]).push({event:n})}; // sin PII; conectar GTM/GA con IDs reales
 const li=a=>a.map(x=>`<li>${x}</li>`).join('');
 const q=new URLSearchParams(location.search),at=JSON.parse(sessionStorage.getItem('attr')||'{}');
@@ -7,7 +7,7 @@ const q=new URLSearchParams(location.search),at=JSON.parse(sessionStorage.getIte
 const rc=(q.get('ref')||'').replace(/[^\w-]/g,'').slice(0,32);if(rc)at.ref=rc;sessionStorage.setItem('attr',JSON.stringify(at));
 if(at.ref&&!f.ref.value)f.ref.value=at.ref;
 function render(){const t=D[lang];document.documentElement.lang=lang;$('#lang').textContent=lang==='en'?'ES':'EN';
-$('#brand').textContent=S.name;$('#nav').innerHTML=['services','process','areas','faq'].map((id,i)=>`<a href="#${id}">${t.nav[i]}</a>`).join('');
+$('#brand').textContent=S.name;$('#brand').hidden=!S.name;$('#nav').innerHTML=['services','process','areas','faq'].map((id,i)=>`<a href="#${id}">${t.nav[i]}</a>`).join('');
 document.querySelectorAll('[data-i]').forEach(e=>{const v=t[e.dataset.i];if(typeof v==='string')e.textContent=v});
 ['incT','modT','procT','areasT','areasN','refT','faqT','fT','okT','okB','fnote'].forEach(k=>{$('#'+k).textContent=t[k]});
 $('#h1').textContent=t.h1;$('#sub').textContent=t.sub;$('#scope').textContent=t.scope;
@@ -48,4 +48,7 @@ const j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw 0;
 ev('lead_saved');f.hidden=true;$('#ok').hidden=false;
 }catch{m.textContent=t.err;$('#send').textContent=t.retry}
 finally{busy=false;$('#send').disabled=false}};
-render()})();
+render();
+if(!S.formEndpoint){f.hidden=true;$('#unavailable').hidden=false;$('#unavailable').textContent=D[lang].off}
+const toggleLanguage=$('#lang').onclick;$('#lang').onclick=()=>{toggleLanguage();if(!S.formEndpoint)$('#unavailable').textContent=D[lang].off};
+})();

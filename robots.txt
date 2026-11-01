@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /reasonlab-holiday-lights/thanks.html
+Sitemap: https://nicco82.github.io/reasonlab-holiday-lights/sitemap.xml

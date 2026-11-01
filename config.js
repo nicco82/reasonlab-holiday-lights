@@ -1,6 +1,6 @@
 // Única fuente de datos del negocio. Vacío = no se muestra (nunca inventar).
 window.SITE = {
-  name: "[BUSINESS NAME]",        // PENDIENTE
+  name: "",        // PENDIENTE
   phone: "",                      // ej. "+14075550100" -> activa botón Call
   sms: "",                        // número para mensajes -> activa botón Text
   email: "",                      // PENDIENTE

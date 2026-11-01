@@ -14,10 +14,10 @@ en: {
  L:{name:"Name",phone:"Phone",pref:"Preferred contact",email:"Email",zip:"ZIP code",city:"City",floors:"Home",svc:"Service",items:"What to light",date:"Preferred date (a request, not a booking)",com:"Comments (we'll ask for your address and photos when needed)",ref:"Referral code (optional)"},
  O:{pref:["Phone call","Text","Email"],floors:["1 story","2 stories"],svc:["Full service","My own lights","Not sure"],items:["Roofline","Windows","Trees","Bushes","Columns","Wreaths"]},
  c1:"I agree to be contacted about this quote request by phone, text or email. [Owner to review wording]", c2:"Optional: I'd like occasional offers and updates. [Owner to review wording]",
- okT:"Request received", okB:"We saved your request and will contact you soon.", err:"We couldn't save your request. Your answers are kept; please try again.", off:"Form not connected yet. Please contact us directly.", req:"Please complete required fields.",
+ okT:"Request received", okB:"We saved your request and will contact you soon.", err:"We couldn't save your request. Your answers are kept; please try again.", off:"Quote requests are not available yet. Please check back soon.", req:"Please complete required fields.",
  foot:["Privacy","Terms"], fnote:"Concept images, if shown, are labeled and are not completed installations."},
 es: {
- nav:["Servicios","Proceso","Zonas","Preguntas"], cta:"Get My Free Quote", call:"Llamar", text:"Mensaje",
+ nav:["Servicios","Proceso","Zonas","Preguntas"], cta:"Cotización gratis", call:"Llamar", text:"Mensaje",
  h1:"Iluminación navideña elegante, instalada y retirada por nosotros.", sub:"Luces navideñas con servicio completo para casas en Kissimmee y zonas cercanas de Orlando. Diseño, instalación, mantenimiento y retiro en enero.",
  incT:"Qué incluye", inc:["Luces alquiladas por temporada","Diseño a medida para tu línea de techo","Instalación profesional","Mantenimiento dentro del alcance acordado","Retiro en enero"],
  modT:"Dos formas de trabajar", mods:[["Servicio completo","Luces alquiladas, diseño, instalación, mantenimiento y retiro."],["Tus luces","Instalamos luces tuyas, sujeto a revisión de estado y compatibilidad."]],
@@ -31,6 +31,6 @@ es: {
  L:{name:"Nombre",phone:"Teléfono",pref:"Contacto preferido",email:"Email",zip:"Código ZIP",city:"Ciudad",floors:"Casa",svc:"Servicio",items:"Qué iluminar",date:"Fecha preferida (solicitud, no reserva)",com:"Comentarios (pediremos dirección y fotos cuando haga falta)",ref:"Código de referido (opcional)"},
  O:{pref:["Llamada","Mensaje","Email"],floors:["1 piso","2 pisos"],svc:["Servicio completo","Mis propias luces","No estoy seguro"],items:["Línea de techo","Ventanas","Árboles","Arbustos","Columnas","Coronas"]},
  c1:"Acepto que me contacten sobre esta solicitud por llamada, mensaje o email. [Texto a revisar por el propietario]", c2:"Opcional: quiero recibir ofertas y novedades ocasionales. [Texto a revisar por el propietario]",
- okT:"Solicitud recibida", okB:"Guardamos tu solicitud y te contactaremos pronto.", err:"No pudimos guardar tu solicitud. Tus respuestas se conservan; intenta de nuevo.", off:"El formulario aún no está conectado. Contáctanos directamente.", req:"Completa los campos obligatorios.",
+ okT:"Solicitud recibida", okB:"Guardamos tu solicitud y te contactaremos pronto.", err:"No pudimos guardar tu solicitud. Tus respuestas se conservan; intenta de nuevo.", off:"Las solicitudes de cotización aún no están disponibles. Vuelve pronto.", req:"Completa los campos obligatorios.",
  foot:["Privacidad","Condiciones"], fnote:"Las imágenes conceptuales, si se muestran, están rotuladas y no son instalaciones realizadas."}
 };
