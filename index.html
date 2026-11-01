@@ -6,16 +6,20 @@
 <meta property="og:description" content="Design, install, upkeep and January removal. Request a free quote.">
 <meta property="og:type" content="website"><!-- og:image y og:url: agregar con imagen y dominio reales -->
 <link rel="stylesheet" href="assets/style.css"></head><body>
-<header class="hd"><b id="brand"></b><nav id="nav"></nav>
+<header class="hd"><a class="brand-mark" href="#top" aria-label="Home"><span class="brand-spark" aria-hidden="true">✦</span><b id="brand"></b></a><nav id="nav"></nav>
 <div class="hr"><button id="lang" aria-label="Language / Idioma">ES</button><a class="btn sm" href="#quote" data-i="cta" data-ev="cta"></a></div></header>
 <main>
-<section class="hero"><div><h1 id="h1"></h1><p id="sub"></p><div class="row"><a class="btn" href="#quote" data-i="cta"></a><span id="contact" class="row"></span></div><p class="pr" id="price"></p></div></section>
-<section id="services"><h2 id="incT"></h2><ul class="grid" id="inc"></ul><h2 id="modT"></h2><div class="grid" id="mods"></div><p class="mut" id="scope"></p></section>
+<section class="hero" id="top"><div class="hero-inner">
+<figure class="hero-visual"><img id="heroImage" src="assets/hero-concept.png" width="1672" height="941" alt="" fetchpriority="high"><figcaption><strong data-i="conceptLabel"></strong><span data-i="conceptNote"></span></figcaption></figure>
+<div class="hero-copy"><p class="eyebrow" data-i="heroTag"></p><h1 id="h1"></h1><p class="hero-sub" id="sub"></p><div class="row hero-actions"><a class="btn" href="#quote" data-i="cta" data-ev="cta"></a><span id="contact" class="row"></span></div><p class="hero-note" data-i="heroNote"></p><p class="pr" id="price"></p></div>
+</div></section>
+<section id="services" class="services-section"><div class="section-heading"><p class="eyebrow" data-i="serviceIntro"></p><h2 id="incT"></h2></div><ul class="grid feature-grid" id="inc"></ul><div class="offer-heading"><p class="eyebrow" data-i="offerIntro"></p><h2 id="modT"></h2></div><div class="grid offer-grid" id="mods"></div><p class="mut scope-note" id="scope"></p></section>
 <section id="gallery" hidden><h2>Gallery</h2><p class="mut">Concept renders are labeled as such.</p></section>
-<section id="process"><h2 id="procT"></h2><ol class="grid" id="proc"></ol></section>
-<section id="areas"><h2 id="areasT"></h2><ul class="grid" id="areaList"></ul><p class="mut" id="areasN"></p></section>
+<section id="process" class="process-section"><div class="section-heading"><p class="eyebrow" data-i="processIntro"></p><h2 id="procT"></h2></div><ol class="grid process-grid" id="proc"></ol></section>
+<section id="areas" class="areas-section"><div class="section-heading"><p class="eyebrow" data-i="areaIntro"></p><h2 id="areasT"></h2><p class="mut" id="areasN"></p></div><ul class="grid area-grid" id="areaList"></ul></section>
 <section id="referral" hidden><h2 id="refT"></h2><p id="refB"></p></section>
-<section id="faq"><h2 id="faqT"></h2><div id="faqList"></div></section>
+<section id="faq" class="faq-section"><div class="section-heading"><p class="eyebrow" data-i="faqIntro"></p><h2 id="faqT"></h2></div><div id="faqList"></div></section>
+<section class="cta-band"><div><p class="eyebrow" data-i="ctaBandKicker"></p><h2 data-i="ctaBandTitle"></h2><p data-i="ctaBandCopy"></p><a class="btn" href="#quote" data-i="cta" data-ev="cta"></a></div><span class="cta-spark" aria-hidden="true">✦</span></section>
 <section id="quote"><h2 id="fT"></h2>
 <p id="unavailable" role="status" hidden></p>
 <form id="f" novalidate><p id="st" class="steps"></p><input name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">

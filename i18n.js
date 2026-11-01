@@ -1,6 +1,9 @@
 window.I18N = {
 en: {
  nav:["Services","Process","Areas","FAQ"], cta:"Get My Free Quote", call:"Call", text:"Text",
+ heroTag:"Seasonal lighting for Kissimmee & nearby Orlando", heroAlt:"AI concept illustration of a Central Florida home with warm seasonal roofline lighting.", conceptLabel:"AI concept illustration", conceptNote:"Not a completed installation", heroNote:"Design · Installation · Seasonal upkeep · January removal",
+ serviceIntro:"A little more than lights", offerIntro:"Choose your setup", processIntro:"Simple from start to finish", areaIntro:"Local service, close to home", faqIntro:"Good to know",
+ ctaBandKicker:"Make a plan for the season", ctaBandTitle:"A warmer welcome starts at the roofline.", ctaBandCopy:"Share what you would like to light. Quote requests will open as soon as the service details are confirmed.",
  h1:"Elegant holiday lighting, installed and removed for you.", sub:"Full-service Christmas lights for homes in Kissimmee and nearby Orlando areas. Design, installation, in-season upkeep and January takedown.",
  incT:"What's included", inc:["Seasonal rental lights","Custom design for your roofline","Professional installation","Maintenance within the agreed scope","January removal and pickup"],
  modT:"Two ways to work with us", mods:[["Full service","Rented lights, design, install, upkeep and removal."],["Your lights","We install lights you own, subject to a condition and compatibility check."]],
@@ -18,6 +21,9 @@ en: {
  foot:["Privacy","Terms"], fnote:"Concept images, if shown, are labeled and are not completed installations."},
 es: {
  nav:["Servicios","Proceso","Zonas","Preguntas"], cta:"Cotización gratis", call:"Llamar", text:"Mensaje",
+ heroTag:"Iluminación de temporada en Kissimmee y Orlando", heroAlt:"Ilustración conceptual generada con IA de una casa de Florida Central con luces cálidas de temporada en el techo.", conceptLabel:"Concepto generado con IA", conceptNote:"No es una instalación realizada", heroNote:"Diseño · Instalación · Mantenimiento · Retiro en enero",
+ serviceIntro:"Mucho más que luces", offerIntro:"Elige cómo quieres trabajar", processIntro:"Sencillo de principio a fin", areaIntro:"Servicio local, cerca de casa", faqIntro:"Información útil",
+ ctaBandKicker:"Planea la temporada", ctaBandTitle:"Una bienvenida cálida empieza en el techo.", ctaBandCopy:"Cuéntanos qué te gustaría iluminar. Las solicitudes de cotización se abrirán cuando confirmemos los detalles del servicio.",
  h1:"Iluminación navideña elegante, instalada y retirada por nosotros.", sub:"Luces navideñas con servicio completo para casas en Kissimmee y zonas cercanas de Orlando. Diseño, instalación, mantenimiento y retiro en enero.",
  incT:"Qué incluye", inc:["Luces alquiladas por temporada","Diseño a medida para tu línea de techo","Instalación profesional","Mantenimiento dentro del alcance acordado","Retiro en enero"],
  modT:"Dos formas de trabajar", mods:[["Servicio completo","Luces alquiladas, diseño, instalación, mantenimiento y retiro."],["Tus luces","Instalamos luces tuyas, sujeto a revisión de estado y compatibilidad."]],
