@@ -1,7 +1,7 @@
 // Única fuente de datos del negocio. Vacío = no se muestra (nunca inventar).
 window.SITE = {
   name: "",        // PENDIENTE
-  phone: "",                      // ej. "+14075550100" -> activa botón Call
+  phone: "+13217548612",          // Google Voice -> botón de llamada
   sms: "",                        // número para mensajes -> activa botón Text
   email: "",                      // PENDIENTE
   domain: "",                     // PENDIENTE

@@ -2,6 +2,8 @@
 let lang=localStorage.getItem('lang')==='es'?'es':'en',step=0,key=crypto.randomUUID(),busy=false,started=false;
 const ev=n=>{(window.dataLayer=window.dataLayer||[]).push({event:n})}; // sin PII; conectar GTM/GA con IDs reales
 const li=a=>a.map(x=>`<li>${x}</li>`).join('');
+const snowLayer=$('#snowfall');
+if(snowLayer&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const snow=document.createDocumentFragment(),count=matchMedia('(max-width:700px)').matches?20:34;for(let i=0;i<count;i++){const flake=document.createElement('i');flake.className='snowflake';flake.style.setProperty('--x',`${Math.random()*100}%`);flake.style.setProperty('--size',`${1.5+Math.random()*3.5}px`);flake.style.setProperty('--duration',`${7+Math.random()*7}s`);flake.style.setProperty('--delay',`${-Math.random()*13}s`);flake.style.setProperty('--drift',`${Math.round((Math.random()-.5)*70)}px`);flake.style.setProperty('--opacity',`${.28+Math.random()*.45}`);snow.append(flake)}snowLayer.append(snow)}
 const q=new URLSearchParams(location.search),at=JSON.parse(sessionStorage.getItem('attr')||'{}');
 ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>q.get(k)&&(at[k]=q.get(k).slice(0,80)));
 const rc=(q.get('ref')||'').replace(/[^\w-]/g,'').slice(0,32);if(rc)at.ref=rc;sessionStorage.setItem('attr',JSON.stringify(at));
@@ -9,6 +11,7 @@ if(at.ref&&!f.ref.value)f.ref.value=at.ref;
 function render(){const t=D[lang];document.documentElement.lang=lang;$('#lang').textContent=lang==='en'?'ES':'EN';
 $('#brand').textContent=S.name||t.brand;$('#brand').hidden=false;$('#nav').innerHTML=['services','process','areas','faq'].map((id,i)=>`<a href="#${id}">${t.nav[i]}</a>`).join('');
 document.querySelectorAll('[data-i]').forEach(e=>{const v=t[e.dataset.i];if(typeof v==='string')e.textContent=v});
+document.querySelectorAll('a[data-i="cta"]').forEach(a=>{a.href=S.phone?`tel:${S.phone}`:'#quote';if(S.phone)a.dataset.ev='call_click'});
 $('#heroImage').alt=t.heroAlt;
 $('#compareBefore').alt=t.beforeAlt;$('#compareAfter').alt=t.afterAlt;range.setAttribute('aria-label',t.compareSlider);
 motion.textContent=motionOn?t.comparePause:t.comparePlay;
@@ -27,9 +30,9 @@ const ck=[...document.querySelectorAll('#items input:checked')].map(e=>e.value);
 $('#items').innerHTML=t.O.items.map((x,i)=>`<label class="ck"><input type="checkbox" value="${i}" ${ck.includes(String(i))?'checked':''}><span>${x}</span></label>`).join('');
 $('#back').textContent=t.back;$('#next').textContent=t.next;$('#send').textContent=t.send;show();
 const c=$('#contact');c.innerHTML='';
-if(S.phone)c.innerHTML+=`<a class="btn ghost" href="tel:${S.phone}" data-ev="call_click">${t.call}</a>`;
 if(S.sms)c.innerHTML+=`<a class="btn ghost" href="sms:${S.sms}" data-ev="message_click">${t.text}</a>`;
 $('#fcontact').textContent=[S.phone,S.email].filter(Boolean).join(' · ');}
+function renderUnavailable(){const n=$('#unavailable');n.textContent=D[lang].off;if(S.phone){n.append(document.createTextNode(' '));const a=document.createElement('a');a.href=`tel:${S.phone}`;a.textContent=S.phone;n.append(a)}}
 function show(){document.querySelectorAll('.step').forEach(e=>e.classList.toggle('on',+e.dataset.s===step));
 $('#st').textContent=`${step+1}/3 · ${D[lang].steps[step]}`;$('#back').hidden=!step;$('#next').hidden=step===2;$('#send').hidden=step!==2}
 function valid(){const box=document.querySelector(`.step[data-s="${step}"]`);let ok=true;
@@ -42,7 +45,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-ev]');if(a
 $('#lang').onclick=()=>{lang=lang==='en'?'es':'en';localStorage.setItem('lang',lang);render()};
 function paintReveal(value){const n=Math.max(5,Math.min(95,Number(value)));compare.style.setProperty('--reveal',`${n}%`);range.value=n;range.setAttribute('aria-valuetext',`${D[lang].beforeLabel} ${100-n}%, ${D[lang].afterLabel} ${n}%`)}
 let motionOn=false,frame=0,legStart=0,legFrom=50,legTo=95,direction=1,autoRevealStarted=false;
-const legDuration=1500,easeAmplitude=.85/(2*Math.PI);
+const legDuration=2500,easeAmplitude=.85/(2*Math.PI);
 function animateReveal(time){if(!motionOn)return;if(!legStart){legStart=time;legFrom=Number(range.value);legTo=direction>0?95:5}const progress=Math.min(1,(time-legStart)/legDuration),eased=progress+easeAmplitude*Math.sin(2*Math.PI*progress);paintReveal(legFrom+(legTo-legFrom)*eased);if(progress>=1){direction*=-1;legFrom=legTo;legTo=direction>0?95:5;legStart=time}frame=requestAnimationFrame(animateReveal)}
 function setMotion(on){motionOn=on;motion.setAttribute('aria-pressed',String(on));motion.textContent=on?D[lang].comparePause:D[lang].comparePlay;if(on){legStart=0;frame=requestAnimationFrame(animateReveal)}else{legStart=0;if(frame)cancelAnimationFrame(frame)}}
 motion.onclick=()=>setMotion(!motionOn);range.addEventListener('input',()=>{if(motionOn)setMotion(false);paintReveal(range.value)});paintReveal(range.value);
@@ -59,6 +62,6 @@ ev('lead_saved');f.hidden=true;$('#ok').hidden=false;
 }catch{m.textContent=t.err;$('#send').textContent=t.retry}
 finally{busy=false;$('#send').disabled=false}};
 render();
-if(!S.formEndpoint){f.hidden=true;$('#unavailable').hidden=false;$('#unavailable').textContent=D[lang].off}
-const toggleLanguage=$('#lang').onclick;$('#lang').onclick=()=>{toggleLanguage();if(!S.formEndpoint)$('#unavailable').textContent=D[lang].off};
+if(!S.formEndpoint){f.hidden=true;$('#unavailable').hidden=false;renderUnavailable()}
+const toggleLanguage=$('#lang').onclick;$('#lang').onclick=()=>{toggleLanguage();if(!S.formEndpoint)renderUnavailable()};
 })();
