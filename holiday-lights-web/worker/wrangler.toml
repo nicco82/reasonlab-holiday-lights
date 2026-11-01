@@ -1,0 +1,6 @@
+name = "holiday-lights-leads"
+main = "index.js"
+compatibility_date = "2026-01-01"
+[[kv_namespaces]]
+binding = "LEADS"
+id = "REEMPLAZAR_CON_ID_KV"
